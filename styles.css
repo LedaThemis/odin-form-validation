@@ -7,3 +7,17 @@ body {
   place-content: center;
   height: 100vh;
 }
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
