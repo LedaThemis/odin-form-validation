@@ -27,3 +27,15 @@ body {
 
   cursor: pointer;
 }
+
+input {
+  border: black solid 1px;
+}
+
+input:invalid {
+  border: red solid 1px;
+}
+
+input:valid {
+  border: lightgreen solid 1px;
+}
