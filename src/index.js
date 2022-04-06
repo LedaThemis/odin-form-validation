@@ -10,7 +10,7 @@ const DOMHelpers = (() => {
   };
   const populateCountryDropdown = (countriesList) => {
     const countryDropdown = document.querySelector('#country');
-    for (let i = 0; i < countriesList; i++) {
+    for (let i = 0; i < countriesList.length; i++) {
       const option = createOptionElement(countriesList[i], countriesList[i]);
       countryDropdown.appendChild(option);
     }
