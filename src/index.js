@@ -1,6 +1,7 @@
+import './styles.css';
 import countriesList from './countries.js';
 
-const DOMHelpers = () => {
+const DOMHelpers = (() => {
   const createOptionElement = (innerText, value) => {
     const option = document.createElement('option');
     option.innerText = innerText;
@@ -18,7 +19,7 @@ const DOMHelpers = () => {
   return {
     populateCountryDropdown,
   };
-};
+})();
 
 const DOMHandlers = (() => {
   const handleFormSubmit = (e) => {
@@ -39,8 +40,6 @@ const DOMHandlers = (() => {
     handleEmailBlur,
   };
 })();
-
-const countries = fetch('https://restcountries.com/v3.1/all').then((res) => console.log(res));
 
 const submitButton = document.querySelector('#submit-button');
 submitButton.addEventListener('click', DOMHandlers.handleFormSubmit);

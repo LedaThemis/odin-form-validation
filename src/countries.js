@@ -1,4 +1,4 @@
-export default countries = [
+export default [
   'Afghanistan',
   'Albania',
   'Algeria',
