@@ -21,3 +21,9 @@ body {
   flex-direction: column;
   gap: 0.25rem;
 }
+
+#submit-button {
+  width: 100%;
+
+  cursor: pointer;
+}
