@@ -1,3 +1,25 @@
+import countriesList from './countries.js';
+
+const DOMHelpers = () => {
+  const createOptionElement = (innerText, value) => {
+    const option = document.createElement('option');
+    option.innerText = innerText;
+    option.value = value;
+    return option;
+  };
+  const populateCountryDropdown = (countriesList) => {
+    const countryDropdown = document.querySelector('#country');
+    for (let i = 0; i < countriesList; i++) {
+      const option = createOptionElement(countriesList[i], countriesList[i]);
+      countryDropdown.appendChild(option);
+    }
+  };
+
+  return {
+    populateCountryDropdown,
+  };
+};
+
 const DOMHandlers = (() => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -25,3 +47,5 @@ submitButton.addEventListener('click', DOMHandlers.handleFormSubmit);
 
 const emailInput = document.querySelector('#email');
 emailInput.addEventListener('blur', DOMHandlers.handleEmailBlur);
+
+DOMHelpers.populateCountryDropdown(countriesList);
