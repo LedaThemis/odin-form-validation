@@ -2,6 +2,24 @@ import './styles.css';
 import countriesList from './countries.js';
 
 const DOMHelpers = (() => {
+  const validEmail = () => {
+    const emailInput = document.querySelector('#email');
+    return !emailInput.validity.typeMismatch && emailInput.value !== '';
+  };
+  const validCountry = () => {
+    const countryInput = document.querySelector('#country');
+    return countryInput.value !== '';
+  };
+  const validZipCode = () => {
+    const zipCodeInput = document.querySelector('#zip-code');
+    return !zipCodeInput.validity.patternMismatch && zipCodeInput.value !== '';
+  };
+  const validPasswords = () => {
+    const passwordInput = document.querySelector('#password');
+    const passwordConfirmInput = document.querySelector('#confirmPassword');
+    return passwordInput.value === passwordConfirmInput.value;
+  };
+
   const createOptionElement = (innerText, value) => {
     const option = document.createElement('option');
     option.innerText = innerText;
@@ -18,12 +36,24 @@ const DOMHelpers = (() => {
 
   return {
     populateCountryDropdown,
+    validEmail,
+    validCountry,
+    validZipCode,
+    validPasswords,
   };
 })();
 
 const DOMHandlers = (() => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (
+      DOMHelpers.validEmail() &&
+      DOMHelpers.validCountry() &&
+      DOMHelpers.validZipCode() &&
+      DOMHelpers.validPasswords()
+    ) {
+      alert('Well done, all inputs are valid!');
+    }
   };
 
   const handleEmailBlur = (e) => {
