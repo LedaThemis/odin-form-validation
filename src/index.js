@@ -39,6 +39,13 @@ const DOMHandlers = (() => {
     }
   };
 
+  const handleCountryChange = (e) => {
+    const countryInput = e.target;
+    if (countryInput.value !== '') {
+      countryInput.classList.remove('invalid-input');
+    }
+  };
+
   const handleZipCodeBlur = (e) => {
     e.preventDefault();
     const zipCodeInput = e.target;
@@ -67,6 +74,7 @@ const DOMHandlers = (() => {
     handleEmailBlur,
     handleZipCodeBlur,
     handlePasswordBlur,
+    handleCountryChange,
   };
 })();
 
@@ -74,12 +82,16 @@ const submitButton = document.querySelector('#submit-button');
 submitButton.addEventListener('click', DOMHandlers.handleFormSubmit);
 
 const emailInput = document.querySelector('#email');
+const countryInput = document.querySelector('#country');
 const zipCodeInput = document.querySelector('#zip-code');
 const passwordInput = document.querySelector('#password');
 const passwordConfirmInput = document.querySelector('#confirmPassword');
 
 emailInput.addEventListener('blur', DOMHandlers.handleEmailBlur);
 emailInput.addEventListener('input', DOMHandlers.handleEmailBlur);
+
+countryInput.addEventListener('change', DOMHandlers.handleCountryChange);
+countryInput.classList.add('invalid-input');
 
 zipCodeInput.addEventListener('blur', DOMHandlers.handleZipCodeBlur);
 zipCodeInput.addEventListener('input', DOMHandlers.handleZipCodeBlur);
