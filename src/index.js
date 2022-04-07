@@ -37,11 +37,11 @@ const DOMHandlers = (() => {
   const handleZipCodeBlur = (e) => {
     e.preventDefault();
     const zipCodeInput = e.target;
+    const zipCodeMismatchSpan = document.querySelector('#invalid-zip-code');
     if (zipCodeInput.validity.patternMismatch) {
-      zipCodeInput.setCustomValidity('Please enter a valid zip code, example: 65251');
-      zipCodeInput.reportValidity();
+      zipCodeMismatchSpan.style.display = '';
     } else {
-      zipCodeInput.setCustomValidity('');
+      zipCodeMismatchSpan.style.display = 'none';
     }
   };
 
