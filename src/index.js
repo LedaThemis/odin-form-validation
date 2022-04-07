@@ -2,10 +2,6 @@ import './styles.css';
 import countriesList from './countries.js';
 
 const DOMHelpers = (() => {
-  const clearValidityReport = (element) => {
-    element.setCustomValidity('');
-  };
-
   const createOptionElement = (innerText, value) => {
     const option = document.createElement('option');
     option.innerText = innerText;
