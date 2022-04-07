@@ -15,23 +15,25 @@
         <form id="form">
             <div id="email-input" class="input-div">
                 <label for="email">*Email:</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
             </div>
             <div id="country-input" class="input-div">
                 <label for="country">*Country:</label>
-                <select name="country" id="country"></select>
+                <select name="country" id="country" required>
+                    <option value="" disabled selected></option>
+                </select>
             </div>
             <div id="zip-code-input" class="input-div">
                 <label for="zip-code">*Zip Code:</label>
-                <input type="text" name="zip-code" id="zip-code" pattern="^[0-9]{5}(?:-[0-9]{4})?$">
+                <input type="text" name="zip-code" id="zip-code" pattern="^[0-9]{5}(?:-[0-9]{4})?$" required>
             </div>
             <div id="password-input" class="input-div">
                 <label for="password">*Password:</label>
-                <input type="text" name="password" id="password">
+                <input type="text" name="password" id="password" required>
             </div>
             <div id="confirmPassword-input" class="input-div">
                 <label for="confirmPassword">*Confirm Password:</label>
-                <input type="text" name="confirmPassword" id="confirmPassword">
+                <input type="text" name="confirmPassword" id="confirmPassword" required>
                 <span id="passwords-do-not-match" style="display: none; font-size: 10px; color: red;">*Passwords do
                     not
                     match</span>
