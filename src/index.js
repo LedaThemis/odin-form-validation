@@ -2,6 +2,10 @@ import './styles.css';
 import countriesList from './countries.js';
 
 const DOMHelpers = (() => {
+  const clearValidityReport = (element) => {
+    element.setCustomValidity('');
+  };
+
   const createOptionElement = (innerText, value) => {
     const option = document.createElement('option');
     option.innerText = innerText;
@@ -29,7 +33,7 @@ const DOMHandlers = (() => {
   const handleEmailBlur = (e) => {
     e.preventDefault();
     const emailInput = e.target;
-    if (emailInput.validity.typeMismatch) {
+    if (emailInput.validity.patternMismatch) {
       emailInput.reportValidity();
     }
   };
@@ -59,6 +63,7 @@ const emailInput = document.querySelector('#email');
 const zipCodeInput = document.querySelector('#zip-code');
 
 emailInput.addEventListener('blur', DOMHandlers.handleEmailBlur);
+emailInput.addEventListener('input', DOMHandlers.handleEmailBlur);
 zipCodeInput.addEventListener('blur', DOMHandlers.handleZipCodeBlur);
 zipCodeInput.addEventListener('input', DOMHandlers.handleZipCodeBlur);
 
