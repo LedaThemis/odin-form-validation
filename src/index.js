@@ -29,8 +29,13 @@ const DOMHandlers = (() => {
   const handleEmailBlur = (e) => {
     e.preventDefault();
     const emailInput = e.target;
+    const emailMismatchSpan = document.querySelector('#invalid-email');
     if (emailInput.validity.typeMismatch) {
-      emailInput.reportValidity();
+      emailMismatchSpan.textContent = emailInput.validationMessage;
+      emailMismatchSpan.style.display = '';
+    } else {
+      emailMismatchSpan.textContent = '';
+      emailMismatchSpan.style.display = '';
     }
   };
 
