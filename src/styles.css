@@ -34,10 +34,11 @@ input {
   border: black solid 1px;
 }
 
-input:invalid {
+input:invalid,
+.invalid-input {
   border: red solid 1px;
 }
 
 input:valid {
-  border: lightgreen solid 1px;
+  border: black solid 1px;
 }
