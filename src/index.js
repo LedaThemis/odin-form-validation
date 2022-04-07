@@ -33,7 +33,7 @@ const DOMHandlers = (() => {
   const handleEmailBlur = (e) => {
     e.preventDefault();
     const emailInput = e.target;
-    if (emailInput.validity.patternMismatch) {
+    if (emailInput.validity.typeMismatch) {
       emailInput.reportValidity();
     }
   };
