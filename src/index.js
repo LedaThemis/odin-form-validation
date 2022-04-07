@@ -60,7 +60,7 @@ const DOMHandlers = (() => {
     e.preventDefault();
     const emailInput = e.target;
     const emailMismatchSpan = document.querySelector('#invalid-email');
-    if (emailInput.validity.typeMismatch) {
+    if (!DOMHelpers.validEmail()) {
       emailMismatchSpan.textContent = emailInput.validationMessage;
       emailMismatchSpan.style.display = '';
     } else {
@@ -71,16 +71,15 @@ const DOMHandlers = (() => {
 
   const handleCountryChange = (e) => {
     const countryInput = e.target;
-    if (countryInput.value !== '') {
+    if (DOMHelpers.validCountry()) {
       countryInput.classList.remove('invalid-input');
     }
   };
 
   const handleZipCodeBlur = (e) => {
     e.preventDefault();
-    const zipCodeInput = e.target;
     const zipCodeMismatchSpan = document.querySelector('#invalid-zip-code');
-    if (zipCodeInput.validity.patternMismatch) {
+    if (!DOMHelpers.validZipCode()) {
       zipCodeMismatchSpan.style.display = '';
     } else {
       zipCodeMismatchSpan.style.display = 'none';
@@ -88,11 +87,9 @@ const DOMHandlers = (() => {
   };
 
   const handlePasswordBlur = (e) => {
-    const passwordInput = document.querySelector('#password');
-    const passwordConfirmInput = document.querySelector('#confirmPassword');
     const passwordMismatchSpan = document.querySelector('#passwords-do-not-match');
 
-    if (passwordInput.value !== passwordConfirmInput.value) {
+    if (!DOMHelpers.validPasswords()) {
       passwordMismatchSpan.style.display = '';
     } else {
       passwordMismatchSpan.style.display = 'none';
