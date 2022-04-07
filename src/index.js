@@ -30,14 +30,25 @@ const DOMHandlers = (() => {
     e.preventDefault();
     const emailInput = e.target;
     if (emailInput.validity.typeMismatch) {
-      console.log(emailInput.validity.typeMismatch);
       emailInput.reportValidity();
+    }
+  };
+
+  const handleZipCodeBlur = (e) => {
+    e.preventDefault();
+    const zipCodeInput = e.target;
+    if (zipCodeInput.validity.patternMismatch) {
+      zipCodeInput.setCustomValidity('Please enter a valid zip code, example: 65251');
+      zipCodeInput.reportValidity();
+    } else {
+      zipCodeInput.setCustomValidity('');
     }
   };
 
   return {
     handleFormSubmit,
     handleEmailBlur,
+    handleZipCodeBlur,
   };
 })();
 
@@ -45,6 +56,10 @@ const submitButton = document.querySelector('#submit-button');
 submitButton.addEventListener('click', DOMHandlers.handleFormSubmit);
 
 const emailInput = document.querySelector('#email');
+const zipCodeInput = document.querySelector('#zip-code');
+
 emailInput.addEventListener('blur', DOMHandlers.handleEmailBlur);
+zipCodeInput.addEventListener('blur', DOMHandlers.handleZipCodeBlur);
+zipCodeInput.addEventListener('input', DOMHandlers.handleZipCodeBlur);
 
 DOMHelpers.populateCountryDropdown(countriesList);
